@@ -55,9 +55,10 @@ export const update = async(req, res) => {
 
         const updatedData = await User.findByIdAndUpdate(id, req.body, {
             new: true
-        })
+        });
 
-        res.status(200).json(updatedData);
+        //res.status(200).json(updatedData);
+        res.status(200).json({message: "User updated successfully!"});
     } catch (error) {
         res.status(500).json({errorMessage: error.message});
     }
@@ -73,7 +74,7 @@ export const deleteUser = async(req, res) =>{
         }
         
         await User.findByIdAndDelete(id);
-        res.status(200).json({message:"User delete successfully."});
+        res.status(200).json({message:"User deleted successfully."});
     } catch (error) {
         res.status(500).json({errorMessage: error.message}); 
     }
